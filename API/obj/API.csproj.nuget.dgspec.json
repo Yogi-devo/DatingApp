@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\angular\\DatingApp\\API\\API.csproj": {}
+    "E:\\angular\\DatingApp\\api\\API.csproj": {}
   },
   "projects": {
-    "E:\\angular\\DatingApp\\API\\API.csproj": {
+    "E:\\angular\\DatingApp\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\angular\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "E:\\angular\\DatingApp\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "E:\\angular\\DatingApp\\API\\API.csproj",
+        "projectPath": "E:\\angular\\DatingApp\\api\\API.csproj",
         "packagesPath": "C:\\Users\\yogi\\.nuget\\packages\\",
-        "outputPath": "E:\\angular\\DatingApp\\API\\obj\\",
+        "outputPath": "E:\\angular\\DatingApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yogi\\AppData\\Roaming\\NuGet\\NuGet.Config",
