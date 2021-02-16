@@ -13,6 +13,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using API.Interfaces;
+using API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using API.Extensions;
 
 namespace API
 {
@@ -31,10 +37,12 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>
+            services.AddApplicationServices(_configuration);
+            // services.AddScoped<ITokenService, TokenService>();
+            // services.AddDbContext<DataContext>(options =>
 
-             options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
-            );
+            //  options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
+            // );
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -42,6 +50,19 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
             services.AddCors();
+
+            services.AddIdentityServices(_configuration);
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            // .AddJwtBearer(Options=>
+            // {
+            //  Options.TokenValidationParameters = new TokenValidationParameters
+            //  {
+            //      ValidateIssuerSigningKey=true,
+            //      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["TokenKey"])),
+            //      ValidateAudience = false,
+            //      ValidateIssuer = false,
+            //  };
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +80,7 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseAuthentication();
            
             app.UseAuthorization();
 
